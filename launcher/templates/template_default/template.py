@@ -21,3 +21,7 @@ class Template(Strategy):
         print()
         
         return "Template DEFAULT!"
+
+
+    def get_client_mapping(self):
+        return super().get_client_mapping()

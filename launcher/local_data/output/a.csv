@@ -1,0 +1,10 @@
+Data faktury;Nr faktury;Data sprzeda¿y;Kod odbiorcy sklepu;Nazwa sklepu;Miejscowoœæ;Adres;NIP;Nazwa produktu;Kod w³asny produktu;producent;Iloœæ sprzeda¿y;Wartoœæ sprzeda¿y netto;Jednostka miary;Nazwa dystrybutora;Oddzia³ dystrybutora;EAN;Wartoœæ netto;Iloœæ_szt;Miesi¹c;Dystrybutor;ID_Pomocnicze_Asortyment;ID_Pomocnicze_Klient;Spó³ka;D. Wst.;D. Wyst.;Cena;Pozycja;SR
+2023-05-31 11:36:26;FV/1111/2023;2023-05-31 11:36:26;6001;Sklep A;Warszawa;ul. xxx5;1111111111;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-30 16:04:23;FV/2222/2023;2023-05-30 16:04:23;6002;Sklep B;Warszawa;ul. xxx6;1111111112;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-11 08:52:33;FV/3333/2023;2023-05-11 08:52:33;6003;Sklep C;Kraków;ul. xxx7;1111111113;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;25.9;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-04 14:13:21;FV/4444/2023;2023-05-04 14:13:21;6004;Sklep D;Kraków;ul. xxx8;1111111114;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;25.9;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-29 13:17:09;FV/5555/2023;2023-05-29 13:17:09;6005;Sklep E;Poznañ;ul. xxx9;1111111115;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-26 20:59:06;FV/6666/2023;2023-05-26 20:59:06;6006;Sklep F;Poznañ;ul. xxx10;1111111116;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-22 10:45:51;FV/7777/2023;2023-05-22 10:45:51;6007;Sklep G;Poznañ;ul. xxx11;1111111117;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-31 11:57:30;FV/8888/2023;2023-05-31 11:57:30;6008;Sklep H;Poznañ;ul. xxx12;1111111118;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;24;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;
+2023-05-11 10:14:01;FV/9999/2023;2023-05-11 10:14:01;6009;Sklep I;Poznañ;ul. xxx13;1111111119;LT Bateria alk. ROCKET   LR03 a'4   (AAA);;yyyy;10;25.9;op;A;A;5908258327182;;;05.2023;ALERT;;;;;;;;

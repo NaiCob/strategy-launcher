@@ -20,3 +20,6 @@ class Template(Strategy):
         print()
         
         return "Template B!"
+
+    def get_client_mapping(self):
+        return super().get_client_mapping()
