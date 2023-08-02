@@ -21,16 +21,15 @@ if __name__ == "__main__":
         context.get_assortment_mapping()
         context.apply_transformation()
 
-        context.add_standard_column()
+        context.add_standard_columns()
+        context.compute_standard_columns()
         context.add_month_column()
         context.add_distributor_column()
         context.clean_nip_number()
-        context.save_as_csv()
 
-        print()
+        context.save_as_csv()
 
     else:
         print("Strategy not selected")
 
-    print()
     print("DONE")

@@ -19,7 +19,7 @@ def read_xlsx_file(path: str, row: int, sheet_name: str) -> pd.DataFrame:
     return df
 
 
-def add_standard_column(df: pd.DataFrame, columns: list) -> pd.DataFrame:
+def add_standard_columns(df: pd.DataFrame, columns: list) -> pd.DataFrame:
     for col in columns:
         if col not in df.columns:
             df[col] = None
@@ -39,4 +39,9 @@ def clean_nip_number(df: pd.DataFrame, nip_column_name: str) -> pd.DataFrame:
 
 
 def save_as_csv(df: pd.DataFrame, path: str) -> None:
-    df.to_csv(path, header=True, sep=';', encoding='cp1250', index=False)
+    status: bool = True
+    try:
+        df.to_csv(path, header=True, sep=';', encoding='cp1250', index=False)
+    except Exception:
+        status = False
+    return status

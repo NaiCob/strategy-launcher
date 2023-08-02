@@ -27,7 +27,11 @@ class Strategy(ABC):
         pass
 
     @abstractmethod
-    def add_standard_column(self):
+    def add_standard_columns(self):
+        pass
+
+    @abstractmethod
+    def compute_standard_columns(self):
         pass
 
     @abstractmethod

@@ -1,5 +1,8 @@
 template_config: dict = {
-    "template_name": "template type B",
-    "file_extension": "xlsx",
-    "sheet_name": "00",
+    "input_file_name": "b",
+    "input_file_extension": "xlsx",
+    "output_file_name": "b",
+    "output_file_extension": "csv",
+    "from_row": 0,
+    "sheet_name": "Sheet1",
 }
