@@ -1,4 +1,8 @@
+
+from typing import Any
+
 from strategy import Strategy
+from utils.decorators import log
 
 
 class Context():
@@ -14,43 +18,40 @@ class Context():
     def strategy(self, strategy: Strategy) -> None:
         self._strategy = strategy
 
-
+    @log
     def load_excel_file(self) -> None:
         return self._strategy.load_excel()
 
-        
-    def get_client_mapping(self) -> None:
-        return self._strategy.get_client_mapping()
+    @log
+    def get_mapping(self, mapping_name: str) -> None:
+        return self._strategy.get_mapping(mapping_name)
 
 
-    def get_assortment_mapping(self) -> None:
-        return self._strategy.get_assortment_mapping()
-
-
+    @log
     def apply_transformation(self) -> None:
         return self._strategy.apply_transformtion()
 
 
+    @log
     def add_standard_columns(self) -> None:
         return self._strategy.add_standard_columns()
 
 
+    @log
     def compute_standard_columns(self) -> None:
         return self._strategy.compute_standard_columns()
 
 
-    def add_month_column(self) -> None:
-        return self._strategy.add_month_column()
+    @log
+    def add_const_column(self, column_name: str, const_value: Any) -> None:
+        return self._strategy.add_const_column(column_name, const_value)
 
 
-    def add_distributor_column(self) -> None:
-        return self._strategy.add_distributor_column()
+    @log
+    def remove_non_numeric(self, column_name: str) -> None:
+        return self._strategy.remove_non_numeric(column_name)
 
 
-    def clean_nip_number(self) -> None:
-        return self._strategy.clean_nip_number()
-
-
+    @log
     def save_as_csv(self) -> None:
         return self._strategy.save_as_csv()
-    

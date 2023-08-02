@@ -1,6 +1,12 @@
 config: dict = {
     "input_folder_path": "local_data/input",
+    "input_file_name": "dummy",
+    "input_file_extension": "xlsx",
     "output_folder_path": "local_data/output",
+    "output_file_name": "dummy",
+    "output_file_extension": "csv",
+    "from_row": 0,
+    "sheet_name": "Sheet1",
     "standard_columns": [
         "Wartość netto",
         "Ilość_szt",
@@ -15,6 +21,5 @@ config: dict = {
         "Pozycja",
         "SR"
     ],
-    "month": "05",
-    "year": 2023,
+    "month_year": "05.2023",
 }

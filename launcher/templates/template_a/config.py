@@ -11,13 +11,13 @@ template_config: dict = {
             "Nazwa sklepu",
             "Miejscowość",
             "Adres",
-            "NIP"
+            "NIP",
         ],
         "dane_klient_join_col": "ID_Pomocnicze_Klient",
         "klient_join_col": "ID_Weryf.",
         "kolumny_do_dodania": [
             "ID",
-            "ID_Weryf."
+            "ID_Weryf.",
         ]
     },
     "assortment_mapping": {
@@ -28,9 +28,10 @@ template_config: dict = {
             "Przelicznik (szt)",
             "ID Info",
             "Nazwa MW",
-            "Nazwa produktu"
+            "Nazwa produktu",
         ],
     },
     "distributor_name": "ALERT",
+    "month_year": "05.2023",
     "nip_number_column_name": "NIP",
 }

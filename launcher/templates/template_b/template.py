@@ -1,15 +1,20 @@
 import importlib
-from datetime import date
+import logging
+from typing import Any
 
-import common.template as common
+import pandas as pd
+
 from strategy import Strategy
+
+
+logger = logging.getLogger("template_b")
 
 
 class Template(Strategy):
 
     def __init__(self) -> None:
         super().__init__()
-
+        logger.info("Upload 'template_b' config.")
         common = importlib.import_module("common.config")
         config = importlib.import_module("templates.template_b.config")
 
@@ -27,64 +32,35 @@ class Template(Strategy):
         self._dataframe = df
 
 
-    def load_excel(self) -> str:
-        print(self.config)
-        path_to_input_file = common.get_path_to_file(
-                self.config.get("input_folder_path"),
-                self.config.get("input_file_name"),
-                self.config.get("input_file_extension"),
-            )
-
-        self._dataframe = common.read_xlsx_file(
-            path=path_to_input_file,
-            row=self.config.get("from_row"),
-            sheet_name=self.config.get("sheet_name")
-        )
-        print()
-        return "Template B!"
+    def load_excel(self):
+        return super().load_excel()
 
 
-    def get_client_mapping(self) -> dict:
-        pass
-
-
-    def get_assortment_mapping(self) -> dict:
-        pass
+    def get_mapping(self, mapping_name: str) -> dict:
+        return super().get_mapping(mapping_name)
 
 
     def apply_transformtion(self):
         "No additional transformation"
-        pass
+        return self._dataframe
 
 
     def add_standard_columns(self):
-        pass
+        return super().add_standard_columns()
 
 
     def compute_standard_columns(self):
-        pass
+        #TODO - define
+        return self._dataframe
 
 
-    def add_month_column(self):
-        pass
+    def add_const_column(self, column_name: str, const_value: Any) -> pd.DataFrame:
+        return super().add_const_column(column_name, const_value)
 
 
-    def add_distributor_column(self):
-        pass
-
-
-    def clean_nip_number(self):
-        pass
+    def remove_non_numeric(self, column_name: str) -> None:
+        return super().remove_non_numeric(column_name)
 
 
     def save_as_csv(self):
-        file_name: str = f'{self.config.get("output_file_name")}_{date.today().strftime("%d_%m_%Y")}'
-
-        path_to_output_file = common.get_path_to_file(
-            self.config.get("output_folder_path"),
-            file_name,
-            self.config.get("output_file_extension"),
-        )
-        
-        common.save_as_csv(self._dataframe, path_to_output_file)
-        return self._dataframe
+        return super().save_as_csv()
