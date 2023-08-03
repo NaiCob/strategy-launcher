@@ -63,7 +63,7 @@ try:
 except:
   start_date = date.today().strftime("%d_%m_%Y")
 
-logger.info(f"Parameters: {job_id = }, {start_date = }, {template = }.")
+logger.info(f"Parameters: {job_id = }, {start_date = }, {template = }, {env = }.")
 
 # COMMAND ----------
 
