@@ -58,7 +58,10 @@ class Launcher:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        Launcher().run(sys.argv[1])
+        job_id, start_date, template_type = sys.argv[1], sys.argv[2], sys.argv[3]
+        logger.info(f"Parameters: {job_id = }, {start_date = }, {template_type = }.")
+        
+        Launcher().run(job_id, start_date, template_type)
     else:
         logger.info(Launcher.get_available_files())
         logger.info("#TODO - run all")

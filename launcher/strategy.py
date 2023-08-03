@@ -109,7 +109,7 @@ class Strategy(ABC):
             .path
             .abspath(
                 f'{self.config.get("output_folder_path")}/'
-                f'{self.config.get("output_file_name")}_{date.today().strftime("%d_%m_%Y")}.'
+                f'{self.config.get("output_file_name")}_{self._job_id}_{self._start_date}.'
                 f'{self.config.get("output_file_extension")}'
             )
         )

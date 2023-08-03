@@ -21,8 +21,8 @@ class Template(Strategy):
         self.config = common.config
         self.config.update(config.template_config)
 
-        sefl.job_id: str = job_id
-        sefl.start_date: str = start_date
+        self._job_id: str = job_id
+        self._start_date: str = start_date
 
 
     @property
