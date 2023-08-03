@@ -14,11 +14,11 @@ logger = logging.getLogger("launcher")
 class Launcher:
 
     @staticmethod
-    def get_available_files() -> list:
+    def get_available_files(environment: str) -> list:
         return [
             file_name.split(".")[0]
             for file_name 
-            in os.listdir(config.get("input_folder_path", None))
+            in os.listdir(config.get(environment).get("input_folder_path", None))
         ]
 
 
@@ -32,13 +32,13 @@ class Launcher:
 
 
     @log
-    def run(self, job_id: str, start_date: str, template_type: str) -> None:
-            assert template_type in Launcher.get_available_files()
+    def run(self, job_id: str, start_date: str, template_type: str, environment: str) -> None:
+            assert template_type in Launcher.get_available_files(environment)
             assert template_type in Launcher.get_available_modules()
 
             m = importlib.import_module(f"templates.template_{template_type}.template")
 
-            context = Context(m.Template(job_id, start_date))
+            context = Context(m.Template(job_id, start_date, environment))
             logger.info(f"Start process for template '{template_type}'.")
 
             logger.info("Transformations to 'bronze' layer started...")
@@ -69,10 +69,9 @@ class Launcher:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        job_id, start_date, template_type = sys.argv[1], sys.argv[2], sys.argv[3]
-        logger.info(f"Parameters: {job_id = }, {start_date = }, {template_type = }.")
+        job_id, start_date, template_type, environment = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+        logger.info(f"Parameters: {job_id = }, {start_date = }, {template_type = }, {environment = }.")
         
-        Launcher().run(job_id, start_date, template_type)
+        Launcher().run(job_id, start_date, template_type, environment)
     else:
-        logger.info(Launcher.get_available_files())
         logger.info("#TODO - run all")
