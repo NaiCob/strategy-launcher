@@ -12,7 +12,7 @@ logger = logging.getLogger("template_a")
 
 class Template(Strategy):
     
-    def __init__(self) -> None:
+    def __init__(self, job_id: str, start_date: str) -> None:
         super().__init__()
         logger.info("Upload 'template_a' config.")
         common = importlib.import_module("common.config")
@@ -20,6 +20,9 @@ class Template(Strategy):
 
         self.config = common.config
         self.config.update(config.template_config)
+
+        sefl.job_id: str = job_id
+        sefl.start_date: str = start_date
 
 
     @property

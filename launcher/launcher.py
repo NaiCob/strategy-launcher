@@ -32,13 +32,13 @@ class Launcher:
 
 
     @log
-    def run(self, template_type: str) -> None:
+    def run(self, job_id: str, start_date: str, template_type: str) -> None:
             assert template_type in Launcher.get_available_files()
             assert template_type in Launcher.get_available_modules()
 
             m = importlib.import_module(f"templates.template_{template_type}.template")
 
-            context = Context(m.Template())
+            context = Context(m.Template(job_id, start_date))
             logger.info(f"Start process for template '{template_type}'.")
 
             context.load_excel_file()
