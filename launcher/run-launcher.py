@@ -29,6 +29,24 @@ logger = logging.getLogger("root")
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Select environment
+
+# COMMAND ----------
+
+envs = {
+    "6745769039507645": "dev",
+}
+
+def get_env():
+    """Detect environment based on workspace id"""
+    workspace_id = spark.conf.get("spark.databricks.clusterUsageTags.clusterOwnerOrgId")
+    return envs[workspace_id]
+  
+env: str = get_env()
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## Parse parameters
 
 # COMMAND ----------
@@ -54,4 +72,4 @@ logger.info(f"Parameters: {job_id = }, {start_date = }, {template = }.")
 
 # COMMAND ----------
 
-Launcher().run(job_id, start_date, template)
+Launcher().run(job_id, start_date, template, env)
