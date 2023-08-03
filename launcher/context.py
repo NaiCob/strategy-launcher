@@ -21,6 +21,12 @@ class Context():
     @log
     def load_excel_file(self) -> None:
         return self._strategy.load_excel()
+    
+    
+    @log
+    def load_csv_file(self, layer_name: str) -> None:
+        return self._strategy.load_csv(layer_name)
+
 
     @log
     def get_mapping(self, mapping_name: str) -> None:
@@ -53,5 +59,5 @@ class Context():
 
 
     @log
-    def save_as_csv(self) -> None:
-        return self._strategy.save_as_csv()
+    def save_as_csv(self, layer_name: str) -> None:
+        return self._strategy.save_as_csv(layer_name)

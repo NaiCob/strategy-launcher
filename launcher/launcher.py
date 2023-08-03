@@ -41,18 +41,29 @@ class Launcher:
             context = Context(m.Template(job_id, start_date))
             logger.info(f"Start process for template '{template_type}'.")
 
+            logger.info("Transformations to 'bronze' layer started...")
             context.load_excel_file()
+            context.save_as_csv("bronze")
+            logger.info("Transformations to 'bronze' layer ended...")
+
+            logger.info("Transformations to 'silver' layer started...")
+            context.load_csv_file("bronze")
             context.get_mapping("client_mapping")
             context.get_mapping("assortment_mapping")
             context.apply_transformation()
-
             context.add_standard_columns()
             context.compute_standard_columns()
             context.add_const_column("Miesiąc", "month_year")
             context.add_const_column("Dystrybutor", "distributor_name")
             context.remove_non_numeric("nip_number_column_name")
+            context.save_as_csv("silver")
+            logger.info("Transformations to 'silver' layer ended...")
 
-            context.save_as_csv()
+
+            logger.info("Transformations to 'gold' layer started...")
+            context.load_csv_file("silver")
+            context.save_as_csv("gold")
+            logger.info("Transformations to 'gold' layer ended...")
 
             logger.info(f"End process for template '{template_type}'.")
 

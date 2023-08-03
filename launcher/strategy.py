@@ -20,7 +20,7 @@ class Strategy(ABC):
     """
 
     @abstractmethod
-    def load_excel(self) -> pd.DataFrame:
+    def load_excel(self) -> pd.DataFrame:    
         """ Load excel file from input destination defined by template configuration.
 
         Returns:
@@ -43,6 +43,35 @@ class Strategy(ABC):
                 dtype=str,
                 skiprows=self.config.get("from_row"),
                 sheet_name=self.config.get("sheet_name")
+            )
+        )
+        return self._dataframe
+
+
+    @abstractmethod
+    def load_csv(self, layer_name: str) -> pd.DataFrame:    
+        """ Load excel file from input destination defined by template configuration.
+
+        Returns:
+            pd.DataFrame: loaded excel file as a dataframe
+        """
+        assert layer_name in ["bronze", "silver", "gold"]
+        path_to_input_file = (
+            os
+            .path
+            .abspath(
+                f'{self.config.get(f"{layer_name}_folder_path")}/'
+                f'{self.config.get("input_file_name")}_{self._job_id}_{self._start_date}.'
+                f'{self.config.get("output_file_extension")}'
+            )
+        )
+
+        self._dataframe = (
+            pd
+            .read_csv(
+                path_to_input_file,
+                sep=";",
+                header=0
             )
         )
         return self._dataframe
@@ -98,17 +127,18 @@ class Strategy(ABC):
         self._dataframe[column] = (
             self
             ._dataframe[column]
-            .apply(lambda value: "".join(char for char in value if char.isdigit()))
+            .apply(lambda value: "".join(char for char in str(value) if char.isdigit()))
         )
 
 
     @abstractmethod
-    def save_as_csv(self):
+    def save_as_csv(self, layer_name: str) -> bool:
+        assert layer_name in ["bronze", "silver", "gold"]
         path = (
             os
             .path
             .abspath(
-                f'{self.config.get("output_folder_path")}/'
+                f'{self.config.get(f"{layer_name}_folder_path")}/'
                 f'{self.config.get("output_file_name")}_{self._job_id}_{self._start_date}.'
                 f'{self.config.get("output_file_extension")}'
             )

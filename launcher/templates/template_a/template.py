@@ -35,8 +35,12 @@ class Template(Strategy):
         self._dataframe = df
 
 
-    def load_excel(self):
+    def load_excel(self) -> pd.DataFrame:
         return super().load_excel()
+
+
+    def load_csv(self, layer_name: str) -> pd.DataFrame:
+        return super().load_csv(layer_name)
 
 
     def get_mapping(self, mapping_name: str) -> dict:
@@ -64,5 +68,5 @@ class Template(Strategy):
         return super().remove_non_numeric(column_name)
 
 
-    def save_as_csv(self):
-        return super().save_as_csv()
+    def save_as_csv(self, layer_name: str):
+        return super().save_as_csv(layer_name)
